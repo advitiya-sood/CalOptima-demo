@@ -33,6 +33,17 @@ export const Styles=StyleSheet.create({
         flex: 1, 
         justifyContent: 'center', 
         alignItems: 'center'
+    },
+    RegisterInputStyle:{
+        width: '80%', 
+        marginBottom: 10 
+    },
+    InfoBox1:{
+        width:"100%",
+        flexDirection:"row"
+
     }
+
+
 
 })
