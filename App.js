@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/Login';
 import Register from './src/Register';
 import Home from './src/Home';
+import Sidebar from './src/drawer/sidebar';
 
 
 
@@ -37,6 +38,8 @@ export default function App() {
 
 
   return (
+    <>
+    <Sidebar />
     
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRouteName}>
@@ -49,6 +52,8 @@ export default function App() {
         name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
+
+    </>
     
   );
 }
