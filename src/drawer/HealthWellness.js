@@ -4,7 +4,7 @@ import React from 'react'
 const HealthWellness = () => {
   return (
     <View style={styles.container}> 
-      <Text style={styles.textStyle}>Health and Wellness</Text>
+      <Text style={styles.textStyle}>Health & Wellness</Text>
     </View>
   )
 }
