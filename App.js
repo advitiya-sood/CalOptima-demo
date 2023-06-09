@@ -76,7 +76,7 @@ export default function App() {
             options={{
               headerShown: false
             }}  
-            name="Home" component={MyDrawer} />
+              component={MyDrawer} />
       </Stack.Navigator>
     </NavigationContainer>
   </SafeAreaView>
