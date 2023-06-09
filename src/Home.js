@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Button } from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+
 export default function Home({navigation}) {
 
     const [userDetails, setUserDetails] = useState();
@@ -36,7 +38,7 @@ export default function Home({navigation}) {
       paddingHorizontal: 40,
     }}>
     <Text style={{fontSize: 20, fontWeight: 'bold'}}>
-      HOME    "logout button to be added in the side drawer"
+      HOME    
     </Text>
     <Button title="Logout" onPress={logout} />
   </View>

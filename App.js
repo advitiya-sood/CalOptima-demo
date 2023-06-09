@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,6 +8,11 @@ import Register from './src/Register';
 import Home from './src/Home';
 import {  SafeAreaView } from 'react-native-safe-area-context';
 import { Styles } from './src/Styles/Styles';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import HealthAndWellness from './src/Drawer/HealthAndWellness';
+import ProviderDirectory from './src/Drawer/ProviderDirectory';
+import Services from './src/Drawer/Services';
+
 
 
 
@@ -14,7 +20,20 @@ export default function App() {
 
 
   const [initialRouteName, setInitialRouteName] = useState('');
+
   const Stack = createStackNavigator();
+  const Drawer = createDrawerNavigator();
+
+  function MyDrawer() {
+    return (
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="HealthAndWellness" component={HealthAndWellness} />
+        <Drawer.Screen name="ProviderDirectory" component={ProviderDirectory} />
+        <Drawer.Screen name="Services" component={Services} />
+      </Drawer.Navigator>
+    );
+  }
 
 
   useEffect(() => {
@@ -37,7 +56,6 @@ export default function App() {
     }
   };
 
-
   return (
     
   <SafeAreaView style={Styles.container} >
@@ -58,7 +76,7 @@ export default function App() {
             options={{
               headerShown: false
             }}  
-            name="Home" component={Home} />
+            name="Home" component={MyDrawer} />
       </Stack.Navigator>
     </NavigationContainer>
   </SafeAreaView>
