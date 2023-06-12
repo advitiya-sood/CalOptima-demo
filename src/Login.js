@@ -12,6 +12,7 @@ export default function Login({navigation}) {
         if (username === 'admin' && password === 'password') {
           Alert.alert('Login successful');
           navigation.navigate('Home');
+          // navigation.navigate('Health');  // change when dashboard created.
         } else {
           Alert.alert('Invalid credentials');
         }

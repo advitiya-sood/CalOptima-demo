@@ -5,8 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/Login';
 import Register from './src/Register';
 import Home from './src/Home';
-
-
+import HealthAndWellNess from './src/healthAndWellness';
+import HealthAssessment from './src/HealthAssessment';
 
 
 export default function App() {
@@ -20,6 +20,9 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name='Health' component={HealthAndWellNess} />
+        <Stack.Screen name='Bmi' component={HealthAssessment} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
