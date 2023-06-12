@@ -32,6 +32,15 @@ export default function Login({navigation}) {
         if(data){
           userData=JSON.parse(data)
 
+
+    const handleLogin = () => {
+        if (username === 'admin' && password === 'password') {
+          Alert.alert('Login successful');
+          navigation.navigate('Home');
+          
+        } else {
+          Alert.alert('Invalid credentials');
+
           if(userData.Email==username && userData.Password == password){
             AsyncStorage.setItem(
               'userInfo',
@@ -39,6 +48,7 @@ export default function Login({navigation}) {
             );
             Alert.alert('Login successful');
             navigation.navigate('Home');
+            // navigation.navigate('Health');  // change when dashboard created.
           }else {
             Alert.alert('Invalid credentials');}
         }

@@ -6,10 +6,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/Login';
 import Register from './src/Register';
 import Home from './src/Home';
+import HealthAndWellNess from './src/Drawer/healthAndWellness';
+import HealthAssessment from './src/Drawer/HealthAssessment';
 import {  SafeAreaView } from 'react-native-safe-area-context';
 import { Styles } from './src/Styles/Styles';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import HealthAndWellness from './src/Drawer/HealthAndWellness';
+// import HealthAndWellness from './src/Drawer/HealthAndWellness';
 import ProviderDirectory from './src/Drawer/ProviderDirectory';
 import Services from './src/Drawer/Services';
 
@@ -31,6 +33,8 @@ export default function App() {
         <Drawer.Screen name="HealthAndWellness" component={HealthAndWellness} />
         <Drawer.Screen name="ProviderDirectory" component={ProviderDirectory} />
         <Drawer.Screen name="Services" component={Services} />
+          <Stack.Screen name='Health' component={HealthAndWellNess} />
+        <Stack.Screen name='Bmi' component={HealthAssessment} />
       </Drawer.Navigator>
     );
   }
@@ -60,6 +64,7 @@ export default function App() {
     
   <SafeAreaView style={Styles.container} >
     <NavigationContainer>
+
       <Stack.Navigator initialRouteName={initialRouteName}>
         <Stack.Screen
           options={{
