@@ -7,7 +7,7 @@ const HealthAssessment = () => {
     const [height, setHeight] = useState('')
     const [bmi,setBmi]= useState('')
     const [description,setDescription] = useState('')
-
+// comment only
     const calculateBmi =() =>{
         const bmi = weight /((height/100)*(height/100))
         setBmi(bmi.toFixed(1))
