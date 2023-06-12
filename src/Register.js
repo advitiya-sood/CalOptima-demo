@@ -1,15 +1,70 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Styles } from './Styles/Styles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Register({navigation}) {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+
+  const [errors,setErrors]=useState({})
+  const [userForm,setUserForm]=useState({
+    MemberId:"",
+    UserName:"",
+    Email:"",
+    BirthDate:"",
+    Mobile:"",
+    Password:""
+  })
+
+
+
+  const validate = () => {
+    let isValid = true;
+
+    if (!userForm.Email) {
+      handleError('Please input email', 'email');
+      isValid = false;
+    } else if (!userForm.Email.match(/\S+@\S+\.\S+/)) {
+      handleError('Please input a valid email', 'email');
+      isValid = false;
+    }
+
+    if (!userForm.UserName) {
+      handleError('Please input Name', 'name');
+      isValid = false;
+    }
+    if (!userForm.MemberId) {
+      handleError('Please input MemberID', 'memberId');
+      isValid = false;
+    }
+
+    if (!userForm.Mobile) {
+      handleError('Please input phone number', 'mobile');
+      isValid = false;
+    }
+
+    if (!userForm.Password) {
+      handleError('Please input password', 'password');
+      isValid = false;
+    } else if (userForm.Password.length < 5) {
+      handleError('Min password length of 5', 'password');
+      isValid = false;
+    }
+
+    if (isValid) {
+      handleRegister();
+    }
+  };
+
+  const handleError = (error, input) => {
+    setErrors(prevState => ({...prevState, [input]: error}));
+  };
+
 
     const handleRegister = () => {
-        
+    
+        AsyncStorage.setItem('userInfo',JSON.stringify(userForm))
         alert('Registration successful');
         navigation.navigate('Login');
       };
@@ -19,35 +74,84 @@ export default function Register({navigation}) {
       };
 
   return (
+    
     <View style={Styles.RegisterBox}>
     <Text style={Styles.HeadingText}>Registration </Text>
+
+    <ScrollView 
+    contentContainerStyle={{justifyContent:"center",alignItems:"center", gap:10}}
+    style={{width:"100%"}}>
+    
+
+    <Input
+      placeholder="Member Id"
+      value={userForm.MemberId}
+      onFocus={() => handleError(null, 'memberId')}
+      errorMessage={errors.mobile}
+      onChangeText={(text)=>setUserForm({...userForm,["MemberId"]:text})}
+      inputStyle={{ paddingLeft: 10 }}
+      containerStyle={Styles.RegisterInputStyle}
+      />
     <Input
       placeholder="Username"
-      value={username}
-      onChangeText={(text) => setUsername(text)}
+      value={userForm.UserName}
+      onFocus={() => handleError(null, 'name')}
+      errorMessage={errors.name}
+      onChangeText={(text)=>setUserForm({...userForm,["UserName"]:text})}
       inputStyle={{ paddingLeft: 10 }}
-      containerStyle={{ width: '80%', marginBottom: 20 }}
-    />
+      containerStyle={Styles.RegisterInputStyle}
+      />
+    <Input
+      placeholder="Email"
+      value={userForm.Email}
+      onFocus={() => handleError(null, 'email')}
+      errorMessage={errors.email}
+      onChangeText={(text)=>setUserForm({...userForm,["Email"]:text})}
+      inputStyle={{ paddingLeft: 10 }}
+      containerStyle={Styles.RegisterInputStyle}
+      />  
+      
+      <Input
+        placeholder="Birth Date"
+        value={userForm.BirthDate}
+        onChangeText={(text)=>setUserForm({...userForm,["BirthDate"]:text})}
+        inputStyle={{ paddingLeft: 10 }}
+        containerStyle={Styles.RegisterInputStyle}
+        />
+      <Input
+        placeholder="Mobile No."
+        keyboardType="numeric"
+        value={userForm.Mobile}
+        onFocus={() => handleError(null, 'mobile')}
+      errorMessage={errors.mobile}
+        name="Mobile"
+        onChangeText={(text)=>setUserForm({...userForm,["Mobile"]:text})}
+        inputStyle={{ paddingLeft: 10 }}
+        containerStyle={Styles.RegisterInputStyle}
+        />
+    
     <Input
       placeholder="Password"
       secureTextEntry={true}
-      value={password}
-      onChangeText={(text) => setPassword(text)}
+      value={userForm.Password}
+      onFocus={() => handleError(null, 'password')}
+      errorMessage={errors.password}
+      onChangeText={(text)=>setUserForm({...userForm,["Password"]:text})}
       inputStyle={{ paddingLeft: 10 }}
-      containerStyle={{ width: '80%', marginBottom: 30 }}
-    />
+      containerStyle={Styles.RegisterInputStyle}
+      />
+
+
+</ScrollView>
     <Button
       title="Register"
-      onPress={handleRegister}
+      onPress={validate}
       buttonStyle={{ backgroundColor: '#3498db' }}
-      containerStyle={{ width: '60%', marginBottom: 10 }}
-    />
-    <Button
-      title="Login"
-      onPress={handleLogin}
-      buttonStyle={{ backgroundColor: '#e74c3c' }}
-      containerStyle={{ width: '60%' }}
-    />
+      containerStyle={Styles.RegisterInputStyle}
+      />
+   <Text  style={{color:"blue", padding:10}}
+        onPress={handleLogin}
+        >Already have an account? Login </Text>
   </View>
   )
 }
