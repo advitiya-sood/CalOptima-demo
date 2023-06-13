@@ -59,7 +59,7 @@ export const Styles=StyleSheet.create({
         width:windowWidth,
         height: windowHeight/8,
         backgroundColor: '#735CC3',
-        marginTop:10,
+        marginTop:10,},
 
     RegisterInputStyle:{
         width: '80%', 
@@ -69,5 +69,5 @@ export const Styles=StyleSheet.create({
         width:"100%",
         flexDirection:"row"
 
-    }
+    },
 })

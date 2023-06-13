@@ -1,8 +1,9 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React,{useState} from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React from 'react'
+import { useState } from 'react'
+import { TextInput } from 'react-native-gesture-handler'
 
-const HealthAssessment = () => {
-
+const HealtAssessments = () => {
     const [weight, setweight] = useState('')
     const [height, setHeight] = useState('')
     const [bmi,setBmi]= useState('')
@@ -62,7 +63,7 @@ const HealthAssessment = () => {
   )
 }
 
-export default HealthAssessment
+export default HealtAssessments
 
 const styles = StyleSheet.create({
     title:{

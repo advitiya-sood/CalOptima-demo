@@ -33,22 +33,14 @@ export default function Login({navigation}) {
           userData=JSON.parse(data)
 
 
-    const handleLogin = () => {
-        if (username === 'admin' && password === 'password') {
-          Alert.alert('Login successful');
-          navigation.navigate('Home');
-          
-        } else {
-          Alert.alert('Invalid credentials');
-
           if(userData.Email==username && userData.Password == password){
             AsyncStorage.setItem(
               'userInfo',
               JSON.stringify({...userData, loggedIn: true}),
             );
             Alert.alert('Login successful');
-            navigation.navigate('Home');
-            // navigation.navigate('Health');  // change when dashboard created.
+    
+            navigation.navigate('Drawer', { screen: 'Home' });
           }else {
             Alert.alert('Invalid credentials');}
         }
@@ -96,3 +88,4 @@ export default function Login({navigation}) {
     </View>
   )
 }
+    

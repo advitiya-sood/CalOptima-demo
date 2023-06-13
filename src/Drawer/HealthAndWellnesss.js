@@ -1,20 +1,20 @@
+
 import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Dimensions,
-  TouchableOpacity,
-  Linking,
-} from "react-native";
-import React from "react";
-import { Styles } from "./Styles/Styles";
-import { CardDivider } from "@rneui/base/dist/Card/Card.Divider";
-import { Image } from "react-native-elements";
+    StyleSheet,
+    Text,
+    View,
+    SafeAreaView,
+    Dimensions,
+    TouchableOpacity,
+    Linking,
+  } from "react-native";
+  import React from "react";
+  import {Styles} from '../Styles/Styles'
+  import { CardDivider } from "@rneui/base/dist/Card/Card.Divider";
+  import { Image } from "react-native-elements";
+  
 
-
-const HealthAndWellNess = ({ navigation }) => {
-
+const HealthAndWellnesss = ({navigation}) => {
   // fxn to open dial screen on android/ios.
   const openDialScreen = () => {
     let number = "";
@@ -156,8 +156,8 @@ const HealthAndWellNess = ({ navigation }) => {
       </View>
     </SafeAreaView>
   );
-};
+}
 
-export default HealthAndWellNess;
+export default HealthAndWellnesss
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({})
