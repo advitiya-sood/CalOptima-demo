@@ -1,46 +1,34 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Button } from 'react-native-elements';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SliderBox } from "react-native-image-slider-box";
 
 
 
-export default function Home({navigation}) {
+export default function Home() {
 
-    const [userDetails, setUserDetails] = useState();
-    useEffect(() => {
-      getUserData();
-    }, []);
-  
-    const getUserData = async () => {
-      const userData = await AsyncStorage.getItem('userInfo');
-      if (userData) {
-        setUserDetails(JSON.parse(userData));
-      }
-    };
-  
-    const logout = () => {
-      AsyncStorage.setItem(
-        'userInfo',
-        JSON.stringify({...userDetails, loggedIn: false}),
-      );
-      navigation.navigate('Login');
-    };
+  const images=[
+    require("../assets/images/img1.jpg"),
+    require('../assets/images/img2.jpg'),
+    require('../assets/images/img3.jpg'),
+    require('../assets/images/img4.jpg')
 
-
-    
-  return (
-    <View
-    style={{
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingHorizontal: 40,
-    }}>
-    <Text style={{fontSize: 20, fontWeight: 'bold'}}>
-      HOME    
-    </Text>
-    <Button title="Logout" onPress={logout} />
-  </View>
-  )
+  ]
+return (
+<View style={styles.container}>
+  <View>
+  <SliderBox  images={images} autoplay={true} />
+</View>
+</View>
+)
 }
+
+const styles=StyleSheet.create({
+container:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+},
+textStyle:{
+    fontSize:30
+}
+})

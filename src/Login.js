@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, Alert  } from 'react-native';
+import { View, Text, Alert, KeyboardAvoidingView  } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Styles } from './Styles/Styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 
 export default function Login({navigation}) {
@@ -38,7 +39,7 @@ export default function Login({navigation}) {
               JSON.stringify({...userData, loggedIn: true}),
             );
             Alert.alert('Login successful');
-            navigation.navigate('Home');
+            navigation.navigate('Drawer', { screen: 'Home' });
           }else {
             Alert.alert('Invalid credentials');}
         }
@@ -53,8 +54,16 @@ export default function Login({navigation}) {
       };
 
   return (
-    <View style={Styles.LoginBox}>
-      <Text style={Styles.HeadingText}>Login </Text>
+    <KeyboardAvoidingView  style={{flex:1}}>
+    <View style={{flex:1}}>
+      <View  style={Styles.TopCircle} />
+
+      <View style={{width:"100%",marginLeft:40,marginTop:30}} >
+    <Text style={{fontSize:30,fontWeight:"500"}}>Welcome!</Text>
+    <Text style={Styles.HeadingText}>Login </Text>
+      </View>
+
+    <View style={Styles.LoginForm}>
       <Input
         placeholder="Email"
         value={username}
@@ -62,8 +71,8 @@ export default function Login({navigation}) {
         errorMessage={errors.email}
         onChangeText={(text) => setUsername(text)}
         inputStyle={{ paddingLeft: 10 }}
-        containerStyle={{ width: '80%', marginBottom: 20 }}
-      />
+        containerStyle={{ width: '85%', marginBottom: 20 }}
+        />
       <Input
         placeholder="Password"
         secureTextEntry={true}
@@ -72,17 +81,22 @@ export default function Login({navigation}) {
         errorMessage={errors.password}
         onChangeText={(text) => setPassword(text)}
         inputStyle={{ paddingLeft: 10 }}
-        containerStyle={{ width: '80%', marginBottom: 30 }}
-      />
+        containerStyle={{ width: '85%', marginBottom: 30 }}
+        />
       <Button
         title="Login"
         onPress={validate}
-        buttonStyle={{ backgroundColor: '#e74c3c' }}
-        containerStyle={{ width: '60%', marginBottom: 10 }}
-      />
-        <Text  style={{color:"blue", padding:10}}
-        onPress={handleRegister}
-        >Dont have an account? Register</Text>
+        buttonStyle={{ backgroundColor: '#1A5276' }}
+        containerStyle={{ width: '50%', marginBottom: 10,borderRadius:50 }}
+        />
     </View>
+    
+    <HideWithKeyboard>
+    <Text  style={Styles.BelowText}
+        onPress={handleRegister}
+        >Dont have an account? <Text style={{color:"#1A5276"}} >Register</Text></Text>
+    </HideWithKeyboard>
+  </View>
+  </KeyboardAvoidingView>
   )
 }

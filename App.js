@@ -1,17 +1,18 @@
 import 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/Login';
 import Register from './src/Register';
 import Home from './src/Home';
 import {  SafeAreaView } from 'react-native-safe-area-context';
 import { Styles } from './src/Styles/Styles';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { DrawerItem, createDrawerNavigator } from '@react-navigation/drawer';
 import HealthAndWellness from './src/Drawer/HealthAndWellness';
 import ProviderDirectory from './src/Drawer/ProviderDirectory';
 import Services from './src/Drawer/Services';
+import CustomDrawer from './src/Drawer/CustomDrawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -23,14 +24,31 @@ export default function App() {
 
   const Stack = createStackNavigator();
   const Drawer = createDrawerNavigator();
+  
 
   function MyDrawer() {
     return (
-      <Drawer.Navigator>
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="HealthAndWellness" component={HealthAndWellness} />
-        <Drawer.Screen name="ProviderDirectory" component={ProviderDirectory} />
-        <Drawer.Screen name="Services" component={Services} />
+      <Drawer.Navigator
+      screenOptions={{
+        drawerStyle:{
+          width:"60%"
+        },
+      headerStyle:{
+        backgroundColor:"#1A5276",
+        height:60
+      },
+      headerTintColor:"white"
+      }} 
+      drawerContent={(props)=><CustomDrawer  {...props}  />}
+      
+      >
+        <Drawer.Group>
+          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="HealthAndWellness" component={HealthAndWellness} />
+          <Drawer.Screen name="ProviderDirectory" component={ProviderDirectory} />
+          <Drawer.Screen name="Services" component={Services} />
+        </Drawer.Group>
+        
       </Drawer.Navigator>
     );
   }
@@ -60,7 +78,13 @@ export default function App() {
     
   <SafeAreaView style={Styles.container} >
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={initialRouteName}>
+      <Stack.Navigator initialRouteName={initialRouteName}
+        screenOptions={{headerStyle:{
+          backgroundColor:"#1A5276",
+        },
+        headerTintColor:"white"
+      }}
+      >
         <Stack.Screen
           options={{
             headerShown: false
@@ -73,6 +97,7 @@ export default function App() {
         
         name="Register" component={Register} />
         <Stack.Screen 
+            name="Drawer"
             options={{
               headerShown: false
             }}  

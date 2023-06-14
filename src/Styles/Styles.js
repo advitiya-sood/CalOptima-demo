@@ -13,17 +13,36 @@ export const Styles=StyleSheet.create({
 
 
     //Login
-    LoginBox:{
+
+    TopCircle:{
+        backgroundColor:"#1A5276",
+        height:150,
+        width:150,
+        borderBottomEndRadius:130
+
+    },
+
+    LoginForm:{
         flex: 1, 
-        justifyContent: 'center', 
-        alignItems: 'center', 
+        justifyContent: "flex-start", 
+        alignItems: "center", 
         width:"100%",
+        marginTop:40,
         padding:5,
     },
     HeadingText:{
         fontSize: 38,
          marginBottom: 30,
          fontWeight:"bold"
+    },
+
+    BelowText:{
+        fontSize:15, 
+        bottom:10,
+        fontWeight:"500", 
+        padding:10,
+        width:"100%",
+        marginHorizontal:85,
     },
 
     //Register

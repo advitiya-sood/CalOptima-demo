@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Styles } from './Styles/Styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HideWithKeyboard from 'react-native-hide-with-keyboard';
 
 export default function Register({navigation}) {
 
@@ -74,12 +75,13 @@ export default function Register({navigation}) {
       };
 
   return (
+    <View style={{flex:1}}>
     
     <View style={Styles.RegisterBox}>
-    <Text style={Styles.HeadingText}>Registration </Text>
+    <Text style={[Styles.HeadingText,{marginTop:20}]}>Create Account</Text>
 
     <ScrollView 
-    contentContainerStyle={{justifyContent:"center",alignItems:"center", gap:10}}
+    contentContainerStyle={{justifyContent:"center",alignItems:"center", gap:5}}
     style={{width:"100%"}}>
     
 
@@ -123,7 +125,7 @@ export default function Register({navigation}) {
         keyboardType="numeric"
         value={userForm.Mobile}
         onFocus={() => handleError(null, 'mobile')}
-      errorMessage={errors.mobile}
+        errorMessage={errors.mobile}
         name="Mobile"
         onChangeText={(text)=>setUserForm({...userForm,["Mobile"]:text})}
         inputStyle={{ paddingLeft: 10 }}
@@ -144,14 +146,20 @@ export default function Register({navigation}) {
 
 </ScrollView>
     <Button
-      title="Register"
+      title="Sign Up"
       onPress={validate}
-      buttonStyle={{ backgroundColor: '#3498db' }}
-      containerStyle={Styles.RegisterInputStyle}
+      buttonStyle={{ backgroundColor: '#1A5276' }}
+      containerStyle={{width: '50%', marginBottom: 10,borderRadius:50} }
       />
-   <Text  style={{color:"blue", padding:10}}
-        onPress={handleLogin}
-        >Already have an account? Login </Text>
+
   </View>
+
+    <HideWithKeyboard>
+    <Text  style={Styles.BelowText}
+    onPress={handleLogin}
+    >Alread have an account? <Text style={{color:"#1A5276"}} >Login</Text></Text>
+    </HideWithKeyboard>
+
+</View>
   )
 }
