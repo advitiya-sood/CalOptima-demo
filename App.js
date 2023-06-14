@@ -7,11 +7,11 @@ import Home from './src/Home';
 import {  SafeAreaView } from 'react-native-safe-area-context';
 import { Styles } from './src/Styles/Styles';
 import { DrawerItem, createDrawerNavigator } from '@react-navigation/drawer';
-import HealthAndWellness from './src/Drawer/HealthAndWellness';
-import ProviderDirectory from './src/Drawer/ProviderDirectory';
-import Services from './src/Drawer/Services';
 import CustomDrawer from './src/Drawer/CustomDrawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HealthAndWellnesss from './src/Drawer/HealthAndWellnesss';
+import HealtAssessments from './src/Drawer/HealthAssessments';
+import Services from './src/Drawer/Services';
 
 
 
@@ -41,9 +41,8 @@ export default function App() {
       >
         <Drawer.Group>
           <Drawer.Screen name="Home" component={Home} />
-          <Drawer.Screen name="HealthAndWellness" component={HealthAndWellness} />
-          <Drawer.Screen name="ProviderDirectory" component={ProviderDirectory} />
-          <Drawer.Screen name="Services" component={Services} />
+          <Drawer.Screen name="HealthAndWellness" component={HealthAndWellnesss} />
+          <Drawer.Screen name="Services" component={Services} />          
         </Drawer.Group>
         
       </Drawer.Navigator>
@@ -73,9 +72,7 @@ export default function App() {
 
 
   return (
-    <>
-    <Sidebar />
-    
+    <> 
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRouteName}
         screenOptions={{headerStyle:{
@@ -100,7 +97,11 @@ export default function App() {
             options={{
                headerShown: false
              }}  
+             component={MyDrawer}
         />
+        <Stack.Screen 
+        name='Bmi' 
+        component={HealtAssessments} />
       </Stack.Navigator>
     </NavigationContainer>
 
