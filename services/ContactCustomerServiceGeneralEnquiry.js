@@ -37,6 +37,7 @@ const ContactCustomerServiceGeneralEnquiry = ({navigation}) => {
       />
       <Text style={{paddingHorizontal:5, fontWeight:'bold', fontSize:15}}>Email</Text>
       </View>
+      {/* hello */}
       <Text style={{margin:12, fontWeight:'bold', fontSize:15}}>At what email address may we contact you?</Text>
       <TextInput
       style={{height: 40,
