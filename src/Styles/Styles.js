@@ -1,4 +1,8 @@
 import { StyleSheet } from "react-native";
+import {Dimensions} from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 
 
 
@@ -10,6 +14,8 @@ export const Styles=StyleSheet.create({
     container: {
         flex: 1,
       },
+
+    
 
 
     //Login
@@ -52,6 +58,28 @@ export const Styles=StyleSheet.create({
         justifyContent: 'center', 
         alignItems: 'center'
     },
+
+    // Health&Wellness
+
+    healthContainer: {
+        flex: 1,
+        backgroundColor: '#fff ',
+        alignItems: 'center',
+        
+
+    },
+    headingTitle:{
+        fontSize:24,
+        color:'purple',
+        fontWeight:'bold'
+
+    },
+    centerBody: {
+        width:windowWidth,
+        height: windowHeight/8,
+        backgroundColor: '#735CC3',
+        marginTop:10,},
+
     RegisterInputStyle:{
         width: '80%', 
         marginBottom: 5 
@@ -59,5 +87,6 @@ export const Styles=StyleSheet.create({
     InfoBox1:{
         width:"100%",
         flexDirection:"row"
-    }
+
+    },
 })

@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -16,12 +15,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-
 export default function App() {
 
 
   const [initialRouteName, setInitialRouteName] = useState('');
-
   const Stack = createStackNavigator();
   const Drawer = createDrawerNavigator();
   
@@ -74,9 +71,11 @@ export default function App() {
     }
   };
 
+
   return (
+    <>
+    <Sidebar />
     
-  <SafeAreaView style={Styles.container} >
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRouteName}
         screenOptions={{headerStyle:{
@@ -99,12 +98,14 @@ export default function App() {
         <Stack.Screen 
             name="Drawer"
             options={{
-              headerShown: false
-            }}  
-              component={MyDrawer} />
+               headerShown: false
+             }}  
+        />
       </Stack.Navigator>
     </NavigationContainer>
-  </SafeAreaView>
+
+    </>
+    
   );
 }
 
