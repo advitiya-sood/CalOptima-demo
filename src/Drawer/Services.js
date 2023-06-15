@@ -7,18 +7,22 @@ export default function Services({navigation}) {
 
     const services=[
       {
-        title:"Service1",
-        color:"#717D7E"
+        id:1,
+        title:"General Enquiry",
+        color:"#2980B9"
       },
-       {
+      {
+        id:2,
         title:"Service5",
         color:"#F8C471"
       },
       {
+        id:3,
         title:"Service2",
-        color:"#2980B9"
+        color:"#717D7E"
       },
       {
+        id:4,
         title:"Service3",
         color:"#AF7AC5"
       }
@@ -30,6 +34,7 @@ export default function Services({navigation}) {
     <ScrollView style={{ paddingVertical: 10,width:"100%" }} contentContainerStyle={{alignItems: 'center'}} >
       {
         services.map((service)=><Tile
+        key={service.id}
         title={service.title}
         titleStyle={{ fontSize: 25,fontWeight:"bold"}}
         imageContainerStyle={{borderRadius:12,borderColor:"black",borderWidth:1,backgroundColor:service.color}}
