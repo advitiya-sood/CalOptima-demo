@@ -12,7 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import HealthAndWellnesss from './src/Drawer/HealthAndWellnesss';
 import HealtAssessments from './src/Drawer/HealthAssessments';
 import Services from './src/Drawer/Services';
-import GeneralEnquiry from './service components/GeneralEnquiry';
+import GeneralEnquiry from './src/service components/GeneralEnquiry';
 
 
 
