@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, KeyboardAvoidingView  } from 'react-native';
+import { View, Text, Alert, KeyboardAvoidingView, ScrollView  } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Styles } from './Styles/Styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -54,16 +54,17 @@ export default function Login({navigation}) {
       };
 
   return (
-    <KeyboardAvoidingView  style={{flex:1}}>
+    <KeyboardAvoidingView behavior="height" style={{flex:1}}>
     <View style={{flex:1}}>
       <View  style={Styles.TopCircle} />
 
-      <View style={{width:"100%",marginLeft:40,marginTop:30}} >
+      <View style={{width:"100%",marginLeft:40,marginTop:50}} >
     <Text style={{fontSize:30,fontWeight:"500"}}>Welcome!</Text>
     <Text style={Styles.HeadingText}>Login </Text>
       </View>
 
-    <View style={Styles.LoginForm}>
+    <ScrollView contentContainerStyle={{justifyContent:"center",alignItems:"center", gap:5}}
+    style={{width:"100%",marginTop:40}} >
       <Input
         placeholder="Email"
         value={username}
@@ -89,7 +90,7 @@ export default function Login({navigation}) {
         buttonStyle={{ backgroundColor: '#1A5276' }}
         containerStyle={{ width: '50%', marginBottom: 10,borderRadius:50 }}
         />
-    </View>
+    </ScrollView >
     
     <HideWithKeyboard>
     <Text  style={Styles.BelowText}

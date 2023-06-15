@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { SliderBox } from "react-native-image-slider-box";
+// import { SliderBox } from "react-native-image-slider-box";
 
 
 
@@ -16,7 +16,7 @@ export default function Home() {
 return (
 <View style={styles.container}>
   <View>
-  <SliderBox  images={images} autoplay={true} />
+  {/* <SliderBox  images={images} autoplay={true} /> */}
 </View>
 </View>
 )

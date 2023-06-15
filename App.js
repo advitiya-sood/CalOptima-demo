@@ -32,7 +32,7 @@ export default function App() {
         },
       headerStyle:{
         backgroundColor:"#1A5276",
-        height:60
+        height:80
       },
       headerTintColor:"white"
       }} 
@@ -41,8 +41,8 @@ export default function App() {
       >
         <Drawer.Group>
           <Drawer.Screen name="Home" component={Home} />
-          <Drawer.Screen name="HealthAndWellness" component={HealthAndWellnesss} />
-          <Drawer.Screen name="Services" component={Services} />          
+          <Drawer.Screen  name="HealthAndWellness" component={HealthAndWellnesss} />       
+          <Drawer.Screen name="Services" component={Services} />   
         </Drawer.Group>
         
       </Drawer.Navigator>
